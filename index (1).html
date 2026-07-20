@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Berk — Software Engineer · Java & Security</title>
+<meta name="description" content="Portfolio of Berk (GBarX) — Software Engineering student focused on Java backend development and cybersecurity." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script>
+/* ==========================================================================
+   SITE_DATA — SİTENİN TÜM İÇERİĞİ BURADA. Sadece burayı düzenle.
+   --------------------------------------------------------------------------
+   ► BÖLÜM AÇ / KAPA:
+     sections içinde true = görünür, false = gizli.
+     Experience şu an KAPALI. Açmak için: experience: true yap, hepsi bu.
+
+   ► YENİ PROJE EKLEMEK:
+     projects listesine şu bloğu kopyala:
+     {
+       title: "Project Name",
+       icon: "🔐",                        // istediğin emoji
+       gradient: "g-purple",              // g-teal | g-purple | g-orange | g-pink
+       desc: "Short description.",
+       tags: ["Java", "Security"],
+       link: "https://github.com/GBarX/repo-name"
+     }
+
+   ► SKILL EKLEMEK: skills listesine { name, pct, cat } ekle.
+     cat mevcutlardan biri olmalı (Languages / Security / Tools) ya da
+     yeni bir kategori yazarsan sekme otomatik oluşur.
+   ========================================================================== */
+const SITE_DATA = {
+
+  sections: {
+    about: true,
+    experience: false,     // ← Deneyim bölümü. Hazır olunca true yap.
+    skills: true,
+    projects: true,
+    certifications: true,
+    contact: true
+  },
+
+  name: "Berk",
+  handle: "GBarX",
+  roles: [                 // Hero'da daktilo efektiyle dönen ünvanlar
+    "Java Backend Developer",
+    "Cybersecurity Enthusiast",
+    "Software Engineering Student"
+  ],
+  heroDesc: "Building secure, well-structured backend software in Java — and learning how systems break so I can design ones that don't.",
+  availableBadge: "Open to Internships",
+
+  resumeUrl: null,         // CV linki eklersen "Get Resume" butonu otomatik çıkar
+
+  socials: [
+    { label: "GitHub",  icon: "gh", url: "https://github.com/GBarX" },
+    { label: "X",       icon: "x",  url: "https://x.com/thebitstack" },
+    { label: "Email",   icon: "mail", url: "mailto:hello@example.com" }  // ← kendi mailin
+  ],
+
+  stats: [
+    { num: "6+",  label: "Projects Built" },
+    { num: "3rd", label: "Year — Işık University" },
+    { num: "2",   label: "Certifications in Progress" },
+    { num: "3+",  label: "Languages & Stacks" }
+  ],
+
+  about: {
+    subtitle: "Software Engineering student crafting secure backend systems",
+    summary: "I'm a third-year Software Engineering student at Işık University in Istanbul. My work lives at the intersection of two things I care about: writing clean, object-oriented Java, and understanding how software gets attacked — and how to design it so it doesn't. Right now I'm growing my Password Security Checker into a proper security tool, working through the Google Cybersecurity Certificate and TryHackMe's Linux path, and building in public on X as @thebitstack.",
+    expertise: [
+      {
+        icon: "☕", gradient: "g-teal",
+        title: "Java & Backend Development",
+        desc: "Object-oriented design, custom data structures, and design patterns — built UML-first, not copy-paste-first",
+        chips: ["Java", "OOP", "Design Patterns", "Data Structures"]
+      },
+      {
+        icon: "🛡️", gradient: "g-purple",
+        title: "Cybersecurity",
+        desc: "Application security mindset, Linux fundamentals, and hands-on labs on the road to Security+",
+        chips: ["AppSec", "Linux", "TryHackMe", "Google Cyber Cert"]
+      },
+      {
+        icon: "🗄️", gradient: "g-orange",
+        title: "Databases & Web",
+        desc: "Relational modeling, normalization, and full-stack coursework projects",
+        chips: ["MySQL", "SQL", "PHP", "EER Modeling"]
+      }
+    ]
+  },
+
+  /* Experience — bölüm kapalıyken bile burayı doldurabilirsin,
+     açtığında hazır olur. */
+  experience: [
+    {
+      role: "Intern — Software Development",
+      company: "Company Name",
+      type: "INTERNSHIP",
+      date: "2026",
+      location: "Istanbul, TR",
+      desc: "What you did there — 1-2 sentences.",
+      gradient: "g-teal"
+    }
+  ],
+
+  skills: [
+    { name: "Java",           pct: 90, cat: "Languages" },
+    { name: "SQL / MySQL",    pct: 70, cat: "Languages" },
+    { name: "PHP",            pct: 45, cat: "Languages" },
+    { name: "Linux & Shell",  pct: 65, cat: "Security" },
+    { name: "Security Fundamentals", pct: 60, cat: "Security" },
+    { name: "Networking Basics",     pct: 50, cat: "Security" },
+    { name: "Git & GitHub",   pct: 80, cat: "Tools" },
+    { name: "UML & Design",   pct: 75, cat: "Tools" }
+  ],
+
+  projects: [
+    {
+      title: "Password Security Checker",
+      icon: "🔐", gradient: "g-teal",
+      desc: "Password strength analysis tool evolving into a small security platform. v0.2 adds a Strategy-pattern generator (random + passphrase) behind a clean PasswordGenerator interface, tracked on a 10-issue roadmap.",
+      tags: ["Java", "Security", "Design Patterns"],
+      link: "https://github.com/GBarX/password-strength-checker"
+    },
+    {
+      title: "File System Simulator",
+      icon: "📁", gradient: "g-purple",
+      desc: "In-memory file system built UML-first: directories, files and traversal implemented on custom tree structures rather than library shortcuts.",
+      tags: ["Java", "Data Structures", "Trees"],
+      link: "https://github.com/GBarX"
+    },
+    {
+      title: "Leaderboard & Match History",
+      icon: "🏆", gradient: "g-orange",
+      desc: "Ranking system with match history — heaps and hash tables put to real use instead of staying in a textbook.",
+      tags: ["Java", "Heaps", "Hash Tables"],
+      link: "https://github.com/GBarX"
+    },
+    {
+      title: "ICMS — Conference Management",
+      icon: "🗓️", gradient: "g-pink",
+      desc: "Full conference management system for a Database Systems course, including a normalization quality report. Shipped as a three-person team.",
+      tags: ["PHP", "MySQL", "Team Project"],
+      link: "https://github.com/GBarX"
+    },
+    {
+      title: "Vehicle Management System",
+      icon: "🚗", gradient: "g-teal",
+      desc: "Early OOP project — inheritance, interfaces and polymorphism applied to a fleet management domain.",
+      tags: ["Java", "OOP"],
+      link: "https://github.com/GBarX"
+    }
+  ],
+
+  certifications: [
+    { icon: "🎓", title: "Google Cybersecurity Certificate", org: "Coursera", state: "In Progress", detail: "Completed: Foundations · Play It Safe · Connect and Protect · Linux and SQL" },
+    { icon: "🐧", title: "TryHackMe — Linux Fundamentals", org: "TryHackMe", state: "In Progress", detail: "Hands-on Linux labs and room walkthroughs" },
+    { icon: "📜", title: "Java Data Structures & Algorithms", org: "Coursera", state: "Completed", detail: "Specialization covering core DSA in Java" },
+    { icon: "🛡️", title: "CompTIA Security+", org: "CompTIA", state: "Up Next", detail: "Next milestone on the security track" }
+  ],
+
+  contact: {
+    heading: "Have a question, an internship, or an interesting security problem? Feel free to reach out!",
+    email: "hello@example.com",          // ← kendi mailin (form buraya gider)
+    location: "Istanbul, Türkiye",
+    responseNote: "Open to internships & junior roles. Response time: within 24 hours"
+  }
+};
+</script>
+
+<style>
+:root{
+  --bg:#0a0f1e; --bg2:#0d1329; --card:#111834; --card2:#151d3d;
+  --line:rgba(120,140,200,.14); --ink:#eef1f8; --dim:#8b95ad;
+  --teal1:#34d399; --teal2:#22d3ee;
+  --pur1:#a78bfa; --pur2:#e879f9;
+  --org1:#fbbf24; --org2:#f97316;
+  --pnk1:#f472b6; --pnk2:#fb7185;
+  --sans:"Inter",system-ui,sans-serif;
+  --disp:"Poppins",var(--sans);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal2);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.grad-teal{background:linear-gradient(90deg,var(--teal1),var(--teal2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-purple{background:linear-gradient(90deg,var(--pur1),var(--pur2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-orange{background:linear-gradient(90deg,var(--org1),var(--org2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-pink{background:linear-gradient(90deg,var(--pnk1),var(--pur1));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* glow blobs */
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18;pointer-events:none;z-index:0}
+
+/* ---------- Nav ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(10,15,30,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:28px;height:72px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.35rem}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font-size:.92rem;color:var(--dim);font-weight:500;padding:6px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);border-color:var(--teal2)}
+.hire{margin-left:8px;font-family:var(--disp);font-weight:600;font-size:.92rem;color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2));padding:11px 24px;border-radius:999px;transition:transform .2s,box-shadow .2s}
+.hire:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,211,238,.35)}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:1.1rem;cursor:pointer}
+
+/* ---------- Hero ---------- */
+#hero{position:relative;padding:90px 0 70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hello{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,5.2vw,4rem);line-height:1.12}
+.type-line{font-family:var(--disp);font-weight:700;font-size:clamp(1.25rem,2.4vw,1.8rem);margin-top:14px}
+.caret{display:inline-block;width:3px;height:1.1em;background:var(--teal2);margin-left:4px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-desc{color:var(--dim);margin-top:22px;max-width:48ch;font-size:1.02rem}
+.soc{display:flex;gap:14px;margin-top:28px}
+.soc a{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;transition:transform .2s,border-color .2s}
+.soc a:hover{transform:translateY(-3px);border-color:var(--teal2)}
+.soc svg{width:21px;height:21px;fill:var(--dim)}
+.soc a:hover svg{fill:var(--teal2)}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px}
+.btn{font-family:var(--disp);font-weight:600;font-size:.95rem;padding:13px 28px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-fill{color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2))}
+.btn-fill:hover{box-shadow:0 8px 24px rgba(52,211,153,.35)}
+.btn-line{border:1.5px solid var(--teal2);color:var(--teal2)}
+.avail{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:.9rem;font-weight:500;color:var(--teal1);border:1px solid rgba(52,211,153,.35);background:rgba(52,211,153,.08);padding:10px 18px;border-radius:999px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--teal1);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+
+/* code card */
+.code-card{background:linear-gradient(160deg,#0e1630,#0b1124);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.45);overflow:hidden}
+.code-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.tl{width:12px;height:12px;border-radius:50%}
+.code-top .fname{margin-left:10px;font-family:var(--mono);font-size:.8rem;color:var(--dim)}
+.code-body{padding:22px 24px;font-family:var(--mono);font-size:.85rem;line-height:1.85;white-space:pre;overflow-x:auto}
+.k{color:#c084fc}.t{color:#22d3ee}.s{color:#fbbf24}.p{color:#e879f9}.c{color:#5b6784}.b{color:#f97316}.w{color:#dde3f0}
+
+/* ---------- Sections ---------- */
+section{position:relative;padding:96px 0}
+.sec-head{text-align:center;margin-bottom:56px;position:relative;z-index:1}
+.sec-ico{font-size:2rem;margin-bottom:10px}
+.sec-title{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.4vw,3.1rem)}
+.sec-sub{color:var(--dim);margin-top:12px;font-size:1.02rem}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;text-align:center;padding:30px 16px;transition:transform .2s,border-color .2s}
+.stat:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4)}
+.stat .num{font-family:var(--disp);font-weight:800;font-size:2.1rem}
+.stat .lbl{color:var(--dim);font-size:.88rem;margin-top:6px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:26px;position:relative;z-index:1}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px}
+.card h3{font-family:var(--disp);font-weight:700;font-size:1.25rem;display:flex;align-items:center;gap:12px}
+.card h3 .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.25rem;flex-shrink:0}
+.g-teal{background:linear-gradient(135deg,var(--teal1),var(--teal2))}
+.g-purple{background:linear-gradient(135deg,var(--pur1),var(--pur2))}
+.g-orange{background:linear-gradient(135deg,var(--org1),var(--org2))}
+.g-pink{background:linear-gradient(135deg,var(--pnk1),var(--pnk2))}
+.card p{color:var(--dim);margin-top:14px;font-size:.96rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{font-size:.8rem;color:var(--teal2);border:1px solid rgba(34,211,238,.3);background:rgba(34,211,238,.07);padding:6px 14px;border-radius:999px}
+.exp-stack{display:flex;flex-direction:column;gap:22px}
+.profile-card{display:flex;flex-direction:column;gap:12px}
+.profile-card .who{font-family:var(--disp);font-weight:700;font-size:1.4rem;text-align:center;margin-top:6px}
+.profile-card .sub{text-align:center;color:var(--teal2);font-weight:500;font-size:.95rem}
+.profile-card .uni{text-align:center;color:var(--dim);font-size:.88rem}
+.emblem{width:120px;height:120px;margin:0 auto;border-radius:28px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:2.6rem;color:#07121c;background:linear-gradient(135deg,var(--teal1),var(--teal2));box-shadow:0 16px 40px rgba(34,211,238,.3)}
+
+/* experience */
+.timeline{position:relative;max-width:760px;margin:0 auto;z-index:1}
+.timeline::before{content:"";position:absolute;left:18px;top:0;bottom:0;width:3px;border-radius:2px;background:linear-gradient(var(--pur1),var(--pur2))}
+.t-item{position:relative;padding:0 0 40px 60px}
+.t-item::before{content:"";position:absolute;left:10px;top:8px;width:19px;height:19px;border-radius:50%;background:var(--bg);border:4px solid var(--pur1)}
+.t-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;border-top:4px solid transparent}
+.t-card.g-teal{border-top-color:var(--teal1);background:var(--card)}
+.t-badge{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2));padding:5px 14px;border-radius:999px;margin-bottom:12px}
+.t-card h3{font-family:var(--disp);font-weight:700;font-size:1.2rem}
+.t-card .co{color:var(--teal1);font-weight:600;margin-top:4px}
+.t-meta{display:flex;flex-wrap:wrap;gap:18px;color:var(--dim);font-size:.85rem;margin-top:10px}
+.t-card p{color:var(--dim);margin-top:12px;font-size:.94rem}
+
+/* skills */
+.filter-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:44px;position:relative;z-index:1}
+.f-btn{font-family:var(--disp);font-weight:600;font-size:.9rem;color:var(--dim);background:var(--card);border:1px solid var(--line);padding:11px 24px;border-radius:999px;cursor:pointer;transition:all .2s}
+.f-btn:hover{color:var(--ink)}
+.f-btn.on{color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2));border-color:transparent;box-shadow:0 6px 20px rgba(34,211,238,.3)}
+.skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;transition:transform .2s,border-color .2s}
+.sk:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4)}
+.sk .nm{font-family:var(--disp);font-weight:600;font-size:1rem}
+.sk .cat{color:var(--dim);font-size:.75rem;margin-top:2px}
+.bar{height:7px;border-radius:99px;background:rgba(120,140,200,.15);margin-top:16px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--teal1),var(--teal2));transition:width 1s ease}
+.sk .pct{font-family:var(--mono);font-size:.8rem;color:var(--teal2);margin-top:8px}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;position:relative;z-index:1}
+.pj{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
+.pj:hover{transform:translateY(-5px);border-color:rgba(167,139,250,.45);box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.pj .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:18px}
+.pj h3{font-family:var(--disp);font-weight:700;font-size:1.15rem}
+.pj p{color:var(--dim);font-size:.92rem;margin-top:10px;flex-grow:1}
+.pj .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pj .tag{font-size:.75rem;color:var(--pur1);border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);padding:5px 12px;border-radius:999px}
+.pj .view{margin-top:20px;text-align:center;font-family:var(--disp);font-weight:600;font-size:.9rem;color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2));padding:11px;border-radius:10px;transition:filter .2s}
+.pj .view:hover{filter:brightness(1.1)}
+
+/* certifications */
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;position:relative;z-index:1}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;border-top:4px solid var(--org1);display:flex;gap:20px;transition:transform .2s}
+.cert:hover{transform:translateY(-4px)}
+.cert .ic{font-size:2rem;flex-shrink:0}
+.cert h3{font-family:var(--disp);font-weight:700;font-size:1.08rem}
+.cert .org{color:var(--org1);font-size:.85rem;font-weight:500;margin-top:2px}
+.cert p{color:var(--dim);font-size:.88rem;margin-top:8px}
+.state{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.06em;padding:4px 12px;border-radius:999px;margin-top:10px}
+.state.progress{color:var(--org1);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.08)}
+.state.done{color:var(--teal1);border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.08)}
+.state.next{color:var(--pur1);border:1px solid rgba(167,139,250,.4);background:rgba(167,139,250,.08)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:26px;position:relative;z-index:1}
+.c-stack{display:flex;flex-direction:column;gap:20px}
+.c-info{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.c-info .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+.c-info .l{color:var(--dim);font-size:.8rem}
+.c-info .v{font-weight:600;font-size:.95rem;word-break:break-all}
+label{display:block;font-weight:600;font-size:.9rem;margin:18px 0 8px}
+input,textarea{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink);font-family:var(--sans);font-size:.95rem}
+input:focus,textarea:focus{outline:none;border-color:var(--teal2)}
+textarea{min-height:130px;resize:vertical}
+.send{width:100%;margin-top:22px;border:none;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:1rem;color:#07121c;background:linear-gradient(90deg,var(--teal1),var(--teal2));padding:15px;border-radius:12px;transition:transform .2s,box-shadow .2s}
+.send:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,211,238,.3)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--dim);font-size:.85rem}
+footer .mono{font-family:var(--mono);font-size:.78rem;margin-top:6px;opacity:.7}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .dot,.caret{animation:none}
+  .bar i{transition:none}
+}
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .code-card{max-width:560px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.contact-grid,.cert-grid{grid-template-columns:1fr}
+  .skill-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:10px 24px 18px}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 0}
+  .burger{display:block}
+  .hire{display:none}
+}
+@media (max-width:560px){
+  .skill-grid{grid-template-columns:1fr}
+  section{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#hero" class="logo grad-teal" id="logo"></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a href="#about" data-sec="about">About</a>
+      <a href="#experience" data-sec="experience">Experience</a>
+      <a href="#skills" data-sec="skills">Skills</a>
+      <a href="#projects" data-sec="projects">Projects</a>
+      <a href="#certifications" data-sec="certifications">Certifications</a>
+      <a href="#contact" data-sec="contact">Contact</a>
+    </nav>
+    <a class="hire" href="#contact">Hire Me</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="blob" style="width:480px;height:480px;background:var(--teal2);top:-140px;left:-160px"></div>
+    <div class="blob" style="width:420px;height:420px;background:var(--pur1);bottom:-160px;right:-120px"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="hello">Hello, I'm<br><span class="grad-teal" id="hero-name"></span></h1>
+        <p class="type-line">I'm a <span class="grad-teal" id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+        <p class="hero-desc" id="hero-desc"></p>
+        <div class="soc" id="hero-socials"></div>
+        <div class="cta-row" id="cta-row">
+          <a class="btn btn-fill" href="#contact">Contact Me</a>
+        </div>
+        <div><span class="avail"><span class="dot"></span><span id="avail-text"></span></span></div>
+      </div>
+      <div class="code-card reveal">
+        <div class="code-top">
+          <span class="tl" style="background:#ff5f56"></span>
+          <span class="tl" style="background:#ffbd2e"></span>
+          <span class="tl" style="background:#27c93f"></span>
+          <span class="fname" id="code-fname"></span>
+        </div>
+        <div class="code-body" id="code-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats-sec" style="padding-top:0">
+    <div class="wrap stats reveal" id="stats"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="blob" style="width:420px;height:420px;background:var(--teal1);top:60px;right:-160px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title grad-teal">About Me</h2>
+        <p class="sec-sub" id="about-sub"></p>
+      </div>
+      <div class="about-grid reveal">
+        <div class="card profile-card">
+          <div class="emblem" id="emblem"></div>
+          <div class="who" id="about-name"></div>
+          <div class="sub">Java Backend · Cybersecurity</div>
+          <div class="uni">Software Engineering @ Işık University</div>
+        </div>
+        <div class="exp-stack">
+          <div class="card">
+            <h3><span class="ic g-teal">✨</span> Profile Summary</h3>
+            <p id="about-summary"></p>
+          </div>
+          <div id="expertise-list" class="exp-stack"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="blob" style="width:420px;height:420px;background:var(--pur1);top:40px;left:-160px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-ico">💼</div>
+        <h2 class="sec-title grad-purple">Career Journey</h2>
+        <p class="sec-sub">Where I've worked and what I built there</p>
+      </div>
+      <div class="timeline reveal" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="blob" style="width:420px;height:420px;background:var(--teal2);bottom:0;right:-160px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-ico grad-teal" style="font-family:var(--mono)">&lt;/&gt;</div>
+        <h2 class="sec-title grad-teal">Skills &amp; Expertise</h2>
+        <p class="sec-sub">The tools I reach for — and how far I've taken each one</p>
+      </div>
+      <div class="filter-row reveal" id="filter-row"></div>
+      <div class="skill-grid reveal" id="skill-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="blob" style="width:460px;height:460px;background:var(--pnk1);top:80px;left:-180px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title grad-pink">Featured Projects</h2>
+        <p class="sec-sub">Built UML-first in Java — from security tools to data-structure workouts</p>
+      </div>
+      <div class="proj-grid reveal" id="proj-grid"></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="blob" style="width:420px;height:420px;background:var(--org2);top:60px;right:-160px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-ico">🏅</div>
+        <h2 class="sec-title grad-orange">Certifications &amp; Learning</h2>
+        <p class="sec-sub">The security track, one milestone at a time</p>
+      </div>
+      <div class="cert-grid reveal" id="cert-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="blob" style="width:460px;height:460px;background:var(--teal1);bottom:-120px;left:-160px"></div>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title grad-teal">Get In Touch</h2>
+        <p class="sec-sub" id="contact-heading"></p>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="c-stack">
+          <div class="c-info" style="border-color:rgba(52,211,153,.35)">
+            <span class="dot" style="margin-left:6px"></span>
+            <div><div class="v" style="color:var(--teal1)" id="avail-text2"></div><div class="l" id="response-note"></div></div>
+          </div>
+          <div class="c-info"><span class="ic g-teal">✉️</span><div><div class="l">Email</div><div class="v" id="c-email"></div></div></div>
+          <div class="c-info"><span class="ic g-purple">📍</span><div><div class="l">Location</div><div class="v" id="c-loc"></div></div></div>
+          <div class="c-info"><span class="ic g-orange">🔗</span><div><div class="l">Connect</div><div class="v" id="c-socials"></div></div></div>
+        </div>
+        <div class="card">
+          <label for="f-name">Your Name</label>
+          <input id="f-name" placeholder="John Doe" />
+          <label for="f-mail">Your Email</label>
+          <input id="f-mail" type="email" placeholder="john@example.com" />
+          <label for="f-msg">Your Message</label>
+          <textarea id="f-msg" placeholder="Tell me how I can help you..."></textarea>
+          <button class="send" id="send-btn">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div id="foot-line"></div>
+  <div class="mono">read-only for you · editable for me · built with a single SITE_DATA object</div>
+</footer>
+
+<script>
+/* ---------- Rendering (buraya dokunmana gerek yok) ---------- */
+const D = SITE_DATA;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $ = id => document.getElementById(id);
+
+/* section visibility */
+for (const [key, on] of Object.entries(D.sections)) {
+  if (!on) {
+    const sec = $(key); if (sec) sec.remove();
+    const link = document.querySelector(`[data-sec="${key}"]`); if (link) link.remove();
+  }
+}
+
+/* icons */
+const ICONS = {
+  gh: '<svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C15.4 4.7 16.4 5 16.4 5c.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6a10.9 10.9 0 0 0 7.5-10.4C23.5 5.7 18.3.5 12 .5z"/></svg>',
+  x: '<svg viewBox="0 0 24 24"><path d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 5.9-7zm-1.3 19.4h2L6.6 3.3H4.4l13.2 17.3z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 7.8L3.5 6v12h17V6L12 11.8zM4.9 6h14.2L12 10.5 4.9 6z"/></svg>'
+};
+
+/* nav + hero */
+$("logo").textContent = D.name;
+$("hero-name").textContent = D.name;
+$("hero-desc").textContent = D.heroDesc;
+$("avail-text").textContent = D.availableBadge;
+$("hero-socials").innerHTML = D.socials.map(s =>
+  `<a href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}">${ICONS[s.icon]||"🔗"}</a>`).join("");
+if (D.resumeUrl) $("cta-row").insertAdjacentHTML("beforeend",
+  `<a class="btn btn-line" href="${esc(D.resumeUrl)}" target="_blank" rel="noopener">Get Resume ⬇</a>`);
+
+/* typewriter */
+(function(){
+  const el = $("typed"), roles = D.roles;
+  const rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (rm || roles.length < 2) { el.textContent = roles[0] || ""; return; }
+  let ri = 0, ci = 0, del = false;
+  (function tick(){
+    const word = roles[ri];
+    el.textContent = word.slice(0, ci);
+    if (!del && ci < word.length) { ci++; setTimeout(tick, 70); }
+    else if (!del) { del = true; setTimeout(tick, 1800); }
+    else if (ci > 0) { ci--; setTimeout(tick, 35); }
+    else { del = false; ri = (ri+1) % roles.length; setTimeout(tick, 300); }
+  })();
+})();
+
+/* code card — Berk.java */
+$("code-fname").textContent = D.name + ".java";
+const skillLines = D.skills.slice(0,6).map(s => `        <span class="s">"${esc(s.name)}"</span><span class="w">,</span>`).join("\n");
+$("code-body").innerHTML =
+`<span class="k">public class</span> <span class="t">${esc(D.name)}</span> <span class="k">extends</span> <span class="t">Engineer</span> <span class="w">{</span>
+
+    <span class="t">String</span><span class="w">[] skills = {</span>
+${skillLines}
+    <span class="w">};</span>
+
+    <span class="t">boolean</span> <span class="w">hardWorker</span>    <span class="w">=</span> <span class="b">true</span><span class="w">;</span>
+    <span class="t">boolean</span> <span class="w">quickLearner</span>  <span class="w">=</span> <span class="b">true</span><span class="w">;</span>
+    <span class="t">boolean</span> <span class="w">securityMinded</span><span class="w">=</span> <span class="b">true</span><span class="w">;</span>
+
+    <span class="t">boolean</span> <span class="p">hireable</span><span class="w">() {</span>
+        <span class="k">return</span> <span class="w">hardWorker</span>
+            <span class="w">&amp;&amp; securityMinded</span>
+            <span class="w">&amp;&amp; skills.length &gt;=</span> <span class="b">5</span><span class="w">;</span>
+    <span class="w">}</span>
+<span class="w">}</span>`;
+
+/* stats */
+$("stats").innerHTML = D.stats.map((s,i) => {
+  const g = ["grad-teal","grad-purple","grad-orange","grad-pink"][i%4];
+  return `<div class="stat"><div class="num ${g}">${esc(s.num)}</div><div class="lbl">${esc(s.label)}</div></div>`;
+}).join("");
+
+/* about */
+if (D.sections.about) {
+  $("about-sub").textContent = D.about.subtitle;
+  $("emblem").textContent = D.name[0];
+  $("about-name").textContent = D.name + " · @" + D.handle;
+  $("about-summary").textContent = D.about.summary;
+  $("expertise-list").innerHTML = D.about.expertise.map(e => `
+    <div class="card">
+      <h3><span class="ic ${esc(e.gradient)}">${e.icon}</span> ${esc(e.title)}</h3>
+      <p>${esc(e.desc)}</p>
+      <div class="chips">${e.chips.map(c=>`<span class="chip">${esc(c)}</span>`).join("")}</div>
+    </div>`).join("");
+}
+
+/* experience */
+if (D.sections.experience) {
+  $("timeline").innerHTML = D.experience.map(x => `
+    <div class="t-item">
+      <div class="t-card ${esc(x.gradient||"g-teal")}">
+        <span class="t-badge">${esc(x.type)}</span>
+        <h3>${esc(x.role)}</h3>
+        <div class="co">${esc(x.company)}</div>
+        <div class="t-meta"><span>🗓 ${esc(x.date)}</span><span>📍 ${esc(x.location)}</span></div>
+        <p>${esc(x.desc)}</p>
+      </div>
+    </div>`).join("");
+}
+
+/* skills + filter */
+if (D.sections.skills) {
+  const cats = ["All Skills", ...new Set(D.skills.map(s=>s.cat))];
+  const row = $("filter-row");
+  row.innerHTML = cats.map((c,i)=>`<button class="f-btn${i===0?" on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+  const renderSkills = cat => {
+    const list = cat === "All Skills" ? D.skills : D.skills.filter(s=>s.cat===cat);
+    $("skill-grid").innerHTML = list.map(s => `
+      <div class="sk"><div class="nm">${esc(s.name)}</div><div class="cat">${esc(s.cat)}</div>
+      <div class="bar"><i data-w="${s.pct}"></i></div><div class="pct">${s.pct}%</div></div>`).join("");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      document.querySelectorAll(".bar i").forEach(b=>b.style.width=b.dataset.w+"%");
+    }));
+  };
+  row.addEventListener("click", e => {
+    const b = e.target.closest(".f-btn"); if (!b) return;
+    row.querySelectorAll(".f-btn").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); renderSkills(b.dataset.cat);
+  });
+  renderSkills("All Skills");
+}
+
+/* projects */
+if (D.sections.projects) {
+  $("proj-grid").innerHTML = D.projects.map(p => `
+    <article class="pj">
+      <div class="ic ${esc(p.gradient)}">${p.icon}</div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+      <div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <a class="view" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub</a>
+    </article>`).join("");
+}
+
+/* certifications */
+if (D.sections.certifications) {
+  const cls = s => s==="Completed" ? "done" : s==="Up Next" ? "next" : "progress";
+  $("cert-grid").innerHTML = D.certifications.map(c => `
+    <div class="cert"><div class="ic">${c.icon}</div>
+      <div><h3>${esc(c.title)}</h3><div class="org">${esc(c.org)}</div>
+      <p>${esc(c.detail)}</p><span class="state ${cls(c.state)}">${esc(c.state)}</span></div>
+    </div>`).join("");
+}
+
+/* contact */
+if (D.sections.contact) {
+  $("contact-heading").textContent = D.contact.heading;
+  $("avail-text2").textContent = D.availableBadge;
+  $("response-note").textContent = D.contact.responseNote;
+  $("c-email").textContent = D.contact.email;
+  $("c-loc").textContent = D.contact.location;
+  $("c-socials").innerHTML = D.socials.filter(s=>s.icon!=="mail")
+    .map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" style="color:var(--teal2)">${esc(s.label)}</a>`).join(" · ");
+  $("send-btn").addEventListener("click", () => {
+    const n = $("f-name").value.trim(), m = $("f-mail").value.trim(), t = $("f-msg").value.trim();
+    const body = encodeURIComponent(`${t}\n\n— ${n}${m ? " ("+m+")" : ""}`);
+    location.href = `mailto:${D.contact.email}?subject=${encodeURIComponent("Portfolio Contact — " + (n||"Visitor"))}&body=${body}`;
+  });
+}
+
+/* footer */
+$("foot-line").textContent = `© ${new Date().getFullYear()} ${D.name} (@${D.handle}) — Software Engineering student, Istanbul`;
+
+/* burger */
+$("burger").addEventListener("click", ()=> $("nav-links").classList.toggle("open"));
+$("nav-links").addEventListener("click", e => { if (e.target.tagName==="A") $("nav-links").classList.remove("open"); });
+
+/* reveal + active nav */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("in"); }),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+const links = document.querySelectorAll(".nav-links a");
+const so = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-35% 0px -55% 0px"});
+document.querySelectorAll("main section[id]").forEach(s=>so.observe(s));
+</script>
+</body>
+</html>
